@@ -116,22 +116,29 @@ async function handleZoneClick(zoneName) {
 }
 
 function updateResultsDisplay(zoneName, dieRoll, maneuvers) {
+
     const zoneDiv = document.getElementById("clicked");
     const rollDiv = document.getElementById("rolled");
-    const maneuverDiv = document.getElementById("maneuver");
-    const maneuverImagesDiv = document.getElementById("maneuver-images");
+    const outputDiv = document.getElementById("maneuver-output");
 
-    maneuverImagesDiv.innerHTML = '';
+    outputDiv.innerHTML = "";
 
     zoneDiv.innerHTML = `Zone: ${zoneName}`;
     rollDiv.innerHTML = `Die Roll: ${dieRoll}`;
-    maneuverDiv.innerHTML = maneuvers.join('<br>');
 
     for (const maneuver of maneuvers) {
+
+        const block = document.createElement("div");
+        block.className = "maneuver-block";
+
+        const text = document.createElement("div");
+        text.textContent = maneuver;
 
         const parts = maneuver.trim().split(/\s+/);
         const speed = parts[0];
         const vector = parts.slice(1).join('-').toLowerCase();
+
+        const imgRow = document.createElement("div");
 
         const img1 = document.createElement("img");
         const img2 = document.createElement("img");
@@ -142,12 +149,16 @@ function updateResultsDisplay(zoneName, dieRoll, maneuvers) {
         img1.className = "maneuver-icon";
         img2.className = "maneuver-icon";
 
-        maneuverImagesDiv.appendChild(img1);
-        maneuverImagesDiv.appendChild(img2);
-        maneuverImagesDiv.appendChild(document.createElement("br"));
-    }
+        imgRow.appendChild(img1);
+        imgRow.appendChild(img2);
 
+        // Assemble
+        block.appendChild(text);
+        block.appendChild(imgRow);
+        outputDiv.appendChild(block);
+    }
 }
+
 
 function roll6SidedDie() {
     return (Math.floor(Math.random() * 6) + 1);
