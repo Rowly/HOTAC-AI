@@ -9,7 +9,7 @@ async function getZonesData() {
         return zonesCache;
     }
 
-    const response = await fetch('/data/zones.json');
+    const response = await fetch('data/zones.json');
     if (!response.ok) {
         throw new Error("Failed to load zones.json");
     }
@@ -24,7 +24,7 @@ async function getManeuverData(shipName) {
         return maneuverCache[shipName];
     }
 
-    const response = await fetch(`/data/${shipName}.json`);
+    const response = await fetch(`data/${shipName}.json`);
     if (!response.ok) {
         throw new Error(`Failed to load ${shipName}.json`);
     }
@@ -45,7 +45,7 @@ vehicleButtons.forEach(button => {
 
 function loadShipBoard(shipName) {
     currentShip = shipName.toLowerCase();
-    document.getElementById("main-image").src = `/images/${currentShip}.png`;
+    document.getElementById("main-image").src = `images/${currentShip}.png`;
     loadZones(`${currentShip}.png`);
 }
 
@@ -136,8 +136,8 @@ function updateResultsDisplay(zoneName, dieRoll, maneuvers) {
         const img1 = document.createElement("img");
         const img2 = document.createElement("img");
 
-        img1.src = `/images/maneuvers/${speed}.png`;
-        img2.src = `/images/maneuvers/${vector}.png`;
+        img1.src = `images/maneuvers/${speed}.png`;
+        img2.src = `images/maneuvers/${vector}.png`;
 
         img1.className = "maneuver-icon";
         img2.className = "maneuver-icon";
