@@ -13,11 +13,12 @@ HOTAC-AI recreates the automated opponent behavior mechanics from the classic sp
 ## Disclaimer
 This is an unofficial fan project created for educational and entertainment purposes. All rights to Heroes of the Arturi Cluster belong to their original creators.
 
-## Getting Started
-*(Add setup instructions here)*
+## Documentation
+Visit the [GitHub Pages site](https://rowly.github.io/HOTAC-AI/).
+
 
 ## License
-*(Specify your license preference)*
+For licensing information, please refer to the [LICENSE](LICENSE) file located in this repository.
 
 ---
 
