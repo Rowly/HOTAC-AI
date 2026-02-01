@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTAC V1 AI SYSTEM</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HOTAC V1 AI SYSTEM</h1>
+        </header>
+        
+        <div class="main-content">
+            <aside class="left-column">
+                <nav class="button-panel">
+                    <button class="ship-btn" data-ship="tie-fighter">TIE Fighter</button>
+                    <button class="ship-btn" data-ship="tie-interceptor">TIE Interceptor</button>
+                    <button class="ship-btn" data-ship="tie-bomber">TIE Bomber</button>
+                    <button class="ship-btn" data-ship="tie-advanced">TIE Advanced</button>
+                    <button class="ship-btn" data-ship="lambda-shuttle">Lambda Shuttle</button>
+                </nav>
+            </aside>
+            
+            <main class="content-area">
+                <div class="image-wrapper">
+
+                    <img src="" id="main-image">
+
+                    <svg class="overlay" id="overlay"></svg>
+
+                </div>
+
+            </main>
+
+            <aside class="right-column">
+                <div class="result-display">
+                    <h2>AI Decision Output</h2>
+                    <div id="clicked"></div>
+                    <div id="rolled"></div>
+                    <div id="maneuver"></div>
+                    <div id="maneuver-images"></div>
+                </div>
+
+                </div>
+            </aside>
+
+        </div>
+    </div>
+<script src="js/app.js"></script>
+</body>
+</html>
