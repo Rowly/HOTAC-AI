@@ -48,15 +48,15 @@
     "abeam": {
         "red": {"target_side_right": {
                             "1": "1 bank right",
-                            "2": "2 turn right",
-                            "3": "2 turn right",
+                            "2": "2 turn right red",
+                            "3": "2 turn right red",
                             "4": "3 turn right",
                             "5": "3 turn right",
                             "6": "3 turn right"},
                  "target_side_left": {
                             "1": "1 bank left",
-                            "2": "2 turn left",
-                            "3": "2 turn left",
+                            "2": "2 turn left red",
+                            "3": "2 turn left red",
                             "4": "3 turn left",
                             "5": "3 turn left",
                             "6": "3 turn left"}
@@ -84,27 +84,27 @@
                             "3": "5 k-turn",
                             "4": "3 turn right",
                             "5": "3 turn right",
-                            "6": "2 turn right"},
+                            "6": "2 turn right red"},
                 "target_side_left": {
                             "1": "5 k-turn",
                             "2": "5 k-turn",
                             "3": " 5 k-turn",
                             "4": "3 turn left",
                             "5": "3 turn left",
-                            "6": "2 turn left"}
+                            "6": "2 turn left red"}
                       },
         "green": {"target_side_right": {
                             "1": "5 k-turn",
                             "2": "5 k-turn",
-                            "3": "2 turn right",
-                            "4": "2 turn right",
+                            "3": "2 turn right red",
+                            "4": "2 turn right red",
                             "5": "3 turn right",
                             "6": "3 turn right"},
                   "target_side_left": {
                             "1": "5 k-turn",
                             "2": "5 k-turn",
-                            "3": "2 turn left",
-                            "4": "2 turn left",
+                            "3": "2 turn left red",
+                            "4": "2 turn left red",
                             "5": "3 turn left",
                             "6": "3 turn left"}
                         }
@@ -120,7 +120,7 @@
                   "2": "5 k-turn",
                   "3": "5 k-turn",
                   "4": "5 k-turn",
-                  "5": "2 turn left",
-                  "6": "2 turn right"}
+                  "5": "2 turn left red",
+                  "6": "2 turn right red"}
         }
 }
