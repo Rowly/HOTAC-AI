@@ -20,25 +20,25 @@
                             "3": "1 bank right",
                             "4": "1 bank right",
                             "5": "1 bank right",
-                            "6": "2 turn right"},
+                            "6": "2 turn right red"},
                 "target_side_left": {
                             "1": "0 stop",
                             "2": "1 straight",
                             "3": "1 bank left",
                             "4": "1 bank left",
                             "5": "1 bank left",
-                            "6": "2 turn left"}
+                            "6": "2 turn left red"}
                },
         "green": {"target_side_right": {
                             "1": "2 straight",
-                            "2": "3 bank right",
+                            "2": "3 bank right red",
                             "3": "2 bank right",
                             "4": "2 bank right",
                             "5": "2 bank right",
                             "6": "2 turn right"},
                   "target_side_left": {
                             "1": "2 straight",
-                            "2": "3 bank left",
+                            "2": "3 bank left red",
                             "3": "2 bank left",
                             "4": "2 bank left",
                             "5": "2 bank left",
@@ -48,79 +48,79 @@
     "abeam": {
         "red": {"target_side_right": {
                             "1": "0 stop",
-                            "2": "2 turn right",
-                            "3": "2 turn right",
-                            "4": "2 turn right",
+                            "2": "2 turn right red",
+                            "3": "2 turn right red",
+                            "4": "2 turn right red",
                             "5": "1 bank right",
                             "6": "2 bank right"},
                  "target_side_left": {
                             "1": "0 stop",
-                            "2": "2 turn left",
-                            "3": "2 turn left",
-                            "4": "2 turn left",
+                            "2": "2 turn left red",
+                            "3": "2 turn left red",
+                            "4": "2 turn left red",
                             "5": "1 bank left",
                             "6": "2 bank left"}
                 },
         "green": {"target_side_right": {
-                            "1": "2 turn right",
-                            "2": "2 turn right",
-                            "3": "2 turn right",
-                            "4": "2 turn right",
+                            "1": "2 turn right red",
+                            "2": "2 turn right red",
+                            "3": "2 turn right red",
+                            "4": "2 turn right red",
                             "5": "2 bank right",
-                            "6": "3 turn right"},
+                            "6": "3 bank right red"},
                   "target_side_left": {
-                            "1": "2 turn left",
-                            "2": "2 turn left",
-                            "3": "2 turn left",
-                            "4": "2 turn left",
+                            "1": "2 turn left red",
+                            "2": "2 turn left red",
+                            "3": "2 turn left red",
+                            "4": "2 turn left red",
                             "5": "2 bank left",
-                            "6": "3 turn left"}
+                            "6": "3 bank left red"}
                 }
         },
     "rearquarter": {
         "red": {"target_side_right": {
                             "1": "0 stop",
-                            "2": "2 turn right",
-                            "3": "2 turn right",
-                            "4": "2 turn right",
+                            "2": "2 turn right red",
+                            "3": "2 turn right red",
+                            "4": "2 turn right red",
                             "5": "2 bank right",
-                            "6": "3 bank right"},
+                            "6": "3 bank right red"},
                 "target_side_left": {
                             "1": "0 stop",
-                            "2": "2 turn left",
-                            "3": "2 turn left",
-                            "4": "2 turn left",
+                            "2": "2 turn left red",
+                            "3": "2 turn left red",
+                            "4": "2 turn left red",
                             "5": "2 bank left",
-                            "6": "3 turn left"}
+                            "6": "3 bank left red"}
                       },
         "green": {"target_side_right": {
-                            "1": "2 turn right",
-                            "2": "2 turn right",
-                            "3": "2 turn right",
-                            "4": "2 turn right",
+                            "1": "2 turn right red",
+                            "2": "2 turn right red",
+                            "3": "2 turn right red",
+                            "4": "2 turn right red",
                             "5": "2 bank right",
-                            "6": "3 bank right"},
+                            "6": "3 bank right red"},
                   "target_side_left": {
-                            "1": "2 turn left",
-                            "2": "2 turn left",
-                            "3": "2 turn left",
-                            "4": "2 turn left",
+                            "1": "2 turn left red",
+                            "2": "2 turn left red",
+                            "3": "2 turn left red",
+                            "4": "2 turn left red",
                             "5": "2 bank left",
-                            "6": "3 turn left"}
+                            "6": "3 bank left red"}
                         }
         },
     "rear": {
         "red": {"1": "0 stop",
                 "2": " 0 stop",
-                "3": "2 turn right",
-                "4": "2 turn left",
-                "5": "3 bank right",
-                "6": "3 bank left"},
-        "green": {"1": "2 turn left",
-                  "2": "2 turn left",
-                  "3": "2 turn left",
-                  "4": "2 turn right",
-                  "5": "2 turn right",
-                  "6": "2 turn right"}
+                "3": "2 turn right red",
+                "4": "2 turn left red",
+                "5": "3 bank right red",
+                "6": "3 bank left red"},
+        "green": {"1": "2 turn left red",
+                  "2": "2 turn left red",
+                  "3": "2 turn left red",
+                  "4": "2 turn right red",
+                  "5": "2 turn right red",
+                  "6": "2 turn right red"}
         }
 }
