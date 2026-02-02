@@ -94,6 +94,7 @@ async function handleZoneClick(zoneName) {
     for (const maneuver of baseManeuvers) {
 
         const swerveManeuvers = [];
+        const bearing = getBearingFromManeuver(maneuver);
 
         for (const swerveZone of swerveZones) {
 
@@ -103,8 +104,12 @@ async function handleZoneClick(zoneName) {
                 dieRoll
             );
 
-            if (swerveResults.length > 0) {
-                swerveManeuvers.push(swerveResults[0]);
+            for (const swerve of swerveResults) {
+
+                const swerveBearing = getBearingFromManeuver(swerve);
+                if (bearing === null || swerveBearing === null || bearing === swerveBearing ) {
+                    swerveManeuvers.push(swerve);
+                }
             }
         }
 
@@ -113,7 +118,6 @@ async function handleZoneClick(zoneName) {
             swerve: swerveManeuvers
         });
     }
-
     updateResultsDisplay(zoneName, dieRoll, results);
 }
 
@@ -191,6 +195,16 @@ function getServes(zoneName) {
     };
 
     return swerveMap[zoneName] || [];
+}
+
+function getBearingFromManeuver(text) {
+
+    const lower = text.toLowerCase();
+
+    if (lower.includes("right")) return "right";
+    if (lower.includes("left")) return "left";
+
+    return null; // straight, stop, etc
 }
 
 function roll6SidedDie() {
