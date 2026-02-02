@@ -82,6 +82,16 @@ async function loadZones(imageName) {
 
 async function handleZoneClick(zoneName) {
 
+    const zoneDiv = document.getElementById("clicked");
+    const rollDiv = document.getElementById("rolled");
+    const outputDiv = document.getElementById("maneuver-output");
+
+    outputDiv.innerHTML = "";
+    zoneDiv.textContent = `Zone: ${zoneName}`;
+    rollDiv.textContent = "Rolling...";
+
+    await sleep(400);
+
     const dieRoll = roll6SidedDie();
     const shipManeuvers = await getManeuverData(currentShip);
 
@@ -243,3 +253,8 @@ function createImageRow(maneuverText) {
 
     return row;
 }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
