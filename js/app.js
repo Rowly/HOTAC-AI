@@ -34,7 +34,6 @@ async function getManeuverData(shipName) {
     return data;
 }
 
-
 const vehicleButtons = document.querySelectorAll('.ship-btn');
 vehicleButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -83,15 +82,76 @@ async function loadZones(imageName) {
 }
 
 async function handleZoneClick(zoneName) {
-    const dieRoll = roll6SidedDie();
 
+    const dieRoll = roll6SidedDie();
     const shipManeuvers = await getManeuverData(currentShip);
 
-    if (!zoneName.includes('_')) {
-        console.error("Bad zone name:", zoneName);
-        return;
+    const baseManeuvers = getManeuvers(zoneName, shipManeuvers, dieRoll);
+    const swerveZones = getServes(zoneName);
+
+    const results = [];
+
+    for (const maneuver of baseManeuvers) {
+
+        const swerveManeuvers = [];
+
+        for (const swerveZone of swerveZones) {
+
+            const swerveResults = getManeuvers(
+                swerveZone,
+                shipManeuvers,
+                dieRoll
+            );
+
+            if (swerveResults.length > 0) {
+                swerveManeuvers.push(swerveResults[0]);
+            }
+        }
+
+        results.push({
+            main: maneuver,
+            swerve: swerveManeuvers
+        });
     }
 
+    updateResultsDisplay(zoneName, dieRoll, results);
+}
+
+function updateResultsDisplay(zoneName, dieRoll, results) {
+
+    const zoneDiv = document.getElementById("clicked");
+    const rollDiv = document.getElementById("rolled");
+    const outputDiv = document.getElementById("maneuver-output");
+
+    outputDiv.innerHTML = "";
+
+    zoneDiv.textContent = `Zone: ${zoneName}`;
+    rollDiv.textContent = `Die Roll: ${dieRoll}`;
+
+    for (const result of results) {
+
+        const block = document.createElement("div");
+        block.className = "maneuver-block";
+
+        // === MAIN MANEUVER ===
+        block.appendChild(createTitle("Maneuver Generated"));
+        block.appendChild(createText(result.main));
+        block.appendChild(createImageRow(result.main));
+
+        // === SWERVE MANEUVER ===
+       if (result.swerve && result.swerve.length > 0) {
+            block.appendChild(createTitle("Swerve Generated"));
+            for (const swerve of result.swerve) {
+                block.appendChild(createText(swerve));
+                block.appendChild(createImageRow(swerve));
+            }
+        }
+        outputDiv.appendChild(block);
+    }
+}
+
+
+function getManeuvers(zoneName, shipManeuvers, dieRoll) {
     const arc = zoneName.split('_')[0];
     const range = zoneName.split('_')[1];
 
@@ -112,54 +172,61 @@ async function handleZoneClick(zoneName) {
             shipManeuvers[arc][range][dieRoll]
         );
     }
-    updateResultsDisplay(zoneName, dieRoll, maneuvers);
+    return maneuvers;
 }
 
-function updateResultsDisplay(zoneName, dieRoll, maneuvers) {
+function getServes(zoneName) {
 
-    const zoneDiv = document.getElementById("clicked");
-    const rollDiv = document.getElementById("rolled");
-    const outputDiv = document.getElementById("maneuver-output");
+    const swerveMap = {
+        'front_green': ['forwardquarter_green'],
+        'front_red': ['forwardquarter_red'],
+        'rear_green': ['rearquarter_green'],
+        'rear_red': ['rearquarter_red'],
+        'abeam_green': ['forwardquarter_green', 'rearquarter_green'],
+        'abeam_red': ['forwardquarter_red', 'rearquarter_red'],
+        'forwardquarter_green': ['front_green', 'abeam_green'],
+        'forwardquarter_red': ['front_red', 'abeam_red'],
+        'rearquarter_green': ['rear_green', 'abeam_green'],
+        'rearquarter_red': ['rear_red', 'abeam_red']
+    };
 
-    outputDiv.innerHTML = "";
-
-    zoneDiv.innerHTML = `Zone: ${zoneName}`;
-    rollDiv.innerHTML = `Die Roll: ${dieRoll}`;
-
-    for (const maneuver of maneuvers) {
-
-        const block = document.createElement("div");
-        block.className = "maneuver-block";
-
-        const text = document.createElement("div");
-        text.textContent = maneuver;
-
-        const parts = maneuver.trim().split(/\s+/);
-        const speed = parts[0];
-        const vector = parts.slice(1).join('-').toLowerCase();
-
-        const imgRow = document.createElement("div");
-
-        const img1 = document.createElement("img");
-        const img2 = document.createElement("img");
-
-        img1.src = `images/maneuvers/${speed}.png`;
-        img2.src = `images/maneuvers/${vector}.png`;
-
-        img1.className = "maneuver-icon";
-        img2.className = "maneuver-icon";
-
-        imgRow.appendChild(img1);
-        imgRow.appendChild(img2);
-
-        // Assemble
-        block.appendChild(text);
-        block.appendChild(imgRow);
-        outputDiv.appendChild(block);
-    }
+    return swerveMap[zoneName] || [];
 }
-
 
 function roll6SidedDie() {
     return (Math.floor(Math.random() * 6) + 1);
 };
+
+function createTitle(text) {
+    const el = document.createElement("h4");
+    el.textContent = text;
+    return el;
+}
+
+function createText(text) {
+    const el = document.createElement("div");
+    el.textContent = text;
+    return el;
+}
+
+function createImageRow(maneuverText) {
+
+    const parts = maneuverText.trim().split(/\s+/);
+    const speed = parts[0];
+    const vector = parts.slice(1).join('-').toLowerCase();
+
+    const row = document.createElement("div");
+
+    const img1 = document.createElement("img");
+    img1.src = `images/maneuvers/${speed}.png`;
+    img1.className = "maneuver-icon";
+
+    const img2 = document.createElement("img");
+    img2.src = `images/maneuvers/${vector}.png`;
+    img2.className = "maneuver-icon";
+
+    row.appendChild(img1);
+    row.appendChild(img2);
+
+    return row;
+}
