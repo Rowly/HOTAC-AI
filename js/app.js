@@ -51,7 +51,6 @@ function loadShipBoard(shipName) {
 async function loadZones(imageName) {
 
     const data = await getZonesData();
-    // const zones = data[imageName];
     const zones = data;
 
     if (!zones) {
