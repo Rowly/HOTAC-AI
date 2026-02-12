@@ -111,7 +111,7 @@
         },
     "rear": {
         "red": {"1": "0 stop",
-                "2": " 0 stop",
+                "2": "0 stop",
                 "3": "2 turn right red",
                 "4": "2 turn left red",
                 "5": "3 bank right red",
