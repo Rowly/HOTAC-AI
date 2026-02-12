@@ -122,8 +122,8 @@ async function handleZoneClick(zoneName) {
 
             for (const swerve of swerveResults) {
 
-                // if current ship is a lambda shuttle, we need to ignore the bearing for swerves
-                if (currentShip === "lambda-shuttle") {
+                // if rear arc ignore bearings for swerves
+                if (zoneName.startsWith("rear") || zoneName.startsWith("front")) {
                     swerveManeuvers.push(swerve);
                     continue;
                 }
