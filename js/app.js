@@ -101,9 +101,16 @@ async function handleZoneClick(zoneName) {
     const results = [];
 
     for (const maneuver of baseManeuvers) {
+        
+        if (maneuver.toLowerCase().includes("k-turn")) {
+            // K-Turns don't use swerve zones, just return 3 bank left and 3 bank right
+            results.push({ main: maneuver, swerve: ["3 bank left", "3 bank right"] });
+            continue; 
+        }
 
         const swerveManeuvers = [];
         const bearing = getBearingFromManeuver(maneuver);
+
 
         for (const swerveZone of swerveZones) {
 
